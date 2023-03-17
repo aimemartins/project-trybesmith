@@ -4,6 +4,7 @@ import productsController from './controllers/products.controller';
 import * as usersController from './controllers/users.controller';
 import validateLogin from './middlewares/login.validation';
 import validateProduct from './middlewares/products.validation';
+import validateUser from './middlewares/users.validation';
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(express.json());
 app.get('/products', productsController.getAll);
 
 app.post('/products', validateProduct, productsController.createProduct);
+
+app.post('/users', validateUser, usersController.createUser);
 
 app.post('/login', validateLogin, usersController.userLogin);
 
