@@ -5,6 +5,7 @@ import { createToken } from '../auth/authToken';
 
 const userLogin = async (login: ILogin) => {
   const users = await UserModel.userLogin(login);
+  console.log('QUEM É USERS', users[0]);
   if (users.length === 0 || users[0].password !== login.password) {
     return { status: 401, message: 'Username or password invalid' };
   }

@@ -22,6 +22,16 @@ const createUserSchema = Joi.object({
 
 });
 
-const schemas = { loginSchema, createProducSchema, createUserSchema };
+const createOrderSchema = Joi.object({
+  productsIds: Joi.array().items(Joi.number()).min(1).required()
+    .messages({
+      'array.min': '"productsIds" must include only numbers',
+      'array.base': '"productsIds" must be an array',
+      'array.required': '"productsIds" is required',
+    }),
+  user: Joi.object(),
+});
+
+const schemas = { loginSchema, createProducSchema, createUserSchema, createOrderSchema };
 
 export default schemas;

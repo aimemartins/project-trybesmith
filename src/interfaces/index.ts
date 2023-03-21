@@ -10,7 +10,7 @@ export interface IUser {
   username: string,
   vocation: string,
   level: number,
-  password?: string,
+  password: string,
 }
 
 export interface ILogin {
@@ -19,7 +19,7 @@ export interface ILogin {
 }
 
 export interface IOrder {
-  id: number,
+  id?: number,
   userId: number,
   productsIds: number[],
 }

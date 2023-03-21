@@ -6,6 +6,13 @@ const getAllOrders = async (): Promise<IOrder[]> => {
   return orders;
 };
 
-const OrderService = { getAllOrders };
+const createOr = async (order: IOrder) => {
+  const { userId, productsIds } = order;
+  const orderId = await OrderModel.createOrder(userId);
+  productsIds.forEach((productId) => OrderModel.addOrderInProduct(orderId, productId));
+  return order;
+};
+
+const OrderService = { getAllOrders, createOr };
 
 export default OrderService;
